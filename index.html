@@ -179,6 +179,9 @@ footer{
   max-width:var(--maxw); margin:0 auto; padding:44px 22px 56px;
   color:var(--text-faint); font-size:13px; border-top:1px solid var(--border); margin-top:48px;
 }
+footer .views{display:inline-flex; align-items:center; gap:6px; color:var(--text-dim); margin-bottom:9px;}
+footer .views svg{opacity:.85;}
+footer .views b{font-weight:600; color:var(--text); font-variant-numeric:tabular-nums;}
 
 /* reveal */
 .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
@@ -490,11 +493,28 @@ footer{
 </main>
 
 <footer>
+  <div class="views" id="views" hidden>
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+    <span><b id="viewsNum">—</b> views</span>
+  </div>
   © <span id="year"></span> Tusher Bhomik · Built with Inter &amp; a lot of whitespace.
 </footer>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* page view counter — CounterAPI; increments once per browser session, hides on failure */
+(function(){
+  const box = document.getElementById('views'), num = document.getElementById('viewsNum');
+  if(!box || !num) return;
+  const show = n => { num.textContent = Number(n).toLocaleString(); box.hidden = false; };
+  const cached = sessionStorage.getItem('pv_count');
+  if(cached){ show(cached); return; }
+  fetch('https://api.counterapi.dev/v1/tusherbhomik-portfolio/views/up')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(d => { if(d && d.count != null){ sessionStorage.setItem('pv_count', d.count); show(d.count); } })
+    .catch(() => {});
+})();
 
 /* theme toggle */
 const tt = document.getElementById('themeToggle');
