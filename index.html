@@ -13,10 +13,15 @@
 <meta property="og:description" content="CSE @ BUET — ML/AI research & systems engineering." />
 <meta property="og:type" content="website" />
 
+<!-- Terminal / shell font (Ubuntu Sans Mono), with classic Ubuntu Mono fallback -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:wght@400;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
 <style>
 /* ============================================================
    TUSHER BHOMIK — Cyberpunk Neon Terminal Portfolio
-   Font: Courier New | Single self-contained file
+   Font: Ubuntu Sans Mono (shell font) | Single self-contained file
    ============================================================ */
 
 :root{
@@ -44,7 +49,7 @@ body{
   margin:0;
   background:var(--bg);
   color:var(--text);
-  font-family:"Courier New", Courier, monospace;
+  font-family:"Ubuntu Sans Mono", "Ubuntu Mono", "DejaVu Sans Mono", "Courier New", monospace;
   font-size:16px;
   line-height:1.6;
   overflow-x:hidden;
@@ -636,7 +641,7 @@ footer .heart{color:var(--magenta);}
 
 <footer>
   <div>$ echo "designed &amp; built by Tusher Bhomik" — <span class="heart">&lt;3</span></div>
-  <div style="margin-top:6px; opacity:.7">© <span id="year"></span> Tusher Bhomik · powered by Courier New &amp; neon</div>
+  <div style="margin-top:6px; opacity:.7">© <span id="year"></span> Tusher Bhomik · powered by Ubuntu Mono &amp; neon</div>
 </footer>
 
 <script>
