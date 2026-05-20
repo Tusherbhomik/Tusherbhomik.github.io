@@ -1,0 +1,22 @@
+# Minimal public footprint: ignore everything by default,
+# then explicitly allow only the files that make up the live site.
+*
+
+# --- published site files (whitelist) ---
+# Note: the profile photo is embedded inside index.html (base64 data URI),
+# so there is intentionally no standalone image file in this repo.
+!index.html
+!README.md
+!Tusher-Bhomik-Resume.pdf
+!.gitignore
+
+# Never publish source/build/editor artifacts even if added later
+*.tex
+*.aux
+*.log
+*.out
+*.synctex.gz
+.vscode/
+.idea/
+.DS_Store
+node_modules/
